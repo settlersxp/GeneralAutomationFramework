@@ -1,0 +1,1 @@
+# here reside the tests specific to APIs endpoints

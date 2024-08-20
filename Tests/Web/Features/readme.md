@@ -1,0 +1,1 @@
+# here the tests are grouped by functionality. Useful when a test spreads over multiple pages but not necessarily over multiple technologies 
