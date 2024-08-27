@@ -1,8 +1,9 @@
 # GeneralAutomationFramework
 
 Intended to be:
-1) a general automation framework for any type of automation project.
-2) set up as a multi-repo for translations, mocks and other resources.
+1) A general automation framework for any type of automation project.
+2) Set up as a multi-repo for translations, mocks and other resources.
+3) A project which implements most things from scratch to explain the underlying principles and how some things work in other tools.
 
 ## Decisions:
 1) Intentionally not using https://docs.pytest.org/en/stable/ due to licencing costs for commercial use until approved
