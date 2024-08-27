@@ -1,1 +1,0 @@
-# 1 file per endpoint
