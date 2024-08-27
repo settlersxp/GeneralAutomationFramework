@@ -1,6 +1,6 @@
 # GeneralAutomationFramework
 
-Intended to be:
+## Intended to be:
 1) A general automation framework for any type of automation project.
 2) Set up as a multi-repo for translations, mocks and other resources.
 3) A project which implements most things from scratch to explain the underlying principles and how some things work in other tools.
@@ -23,3 +23,14 @@ Intended to be:
 - Sending data between everything is done through the `data` attribute by importing the dataBroker as such `import dataBroker as Data`.
 - If you want auto-complete for the attributes of the dataBroker add all the keys there as well else enjoy of getting the keys from the dictionary.
 - Can be tested on https://magento.softwaretestingboard.com/ and https://www.saucedemo.com/ for the moment.
+
+## Requests:
+Open a new bug with your request. The discussion will happen on that bug. I will try to implement it as soon as possible.
+
+## How to run:
+1) Install the requirements with `pip install -r requirements.txt`
+2) Run the `runner.py` file with `python runner.py` or `python3 runner.py` depending on your python version
+
+## Contact:
+For any questions or suggestions please contact me at [gabriel.cliseru@gmail.com](mailto:gabriel.cliseru@gmail.com?subject=[GitHub]%20General%20Automation%20Framework). 
+I am open for work and collaborations. My linkedin is https://www.linkedin.com/in/gabriel-cliseru/ .
