@@ -13,6 +13,3 @@ class BuyProductsTest(unittest.TestCase):
         homepage.header.on_load()
         self.assertTrue(homepage.header.selectors.cart_items().text == '1')
         homepage.header.selectors.cart_items().click()
-
-if __name__ == '__main__':
-    unittest.main()
