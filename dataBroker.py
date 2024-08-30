@@ -3,3 +3,4 @@
 BROWSER = None
 LANGUAGE = "en"
 ROOT = "https://magento.softwaretestingboard.com/"
+LOGGED_USER = False
