@@ -1,3 +1,4 @@
+import json
 import os
 import time
 
@@ -10,10 +11,28 @@ from Drivers.base import Base
 # start a selenium server using docker
 client = docker.from_env()
 container = None
-try:
-    # pull the image from the repo and wait
-    client.images.pull(Base.CHROME)
 
+
+def load_translations():
+    # load translation files from the `Translations` folder
+    translations = {}
+    for translation_file in os.listdir('Translations/'):
+        if not translation_file.endswith('.py') or translation_file == '__init__.py':
+            continue
+
+        # if the file is a .txt file then load it as a dictionary
+        if translation_file.endswith('.txt'):
+            with open(f'Translations/{translation_file}', 'r') as file:
+                translations[translation_file[:-4]] = file.read()
+
+        # if the file ends with .json then load it as a json file
+        elif translation_file.endswith('.json'):
+            with open(f'Translations/{translation_file}', 'r') as file:
+                translations[translation_file[:-5]] = json.load(file)
+
+
+def start_browser():
+    global container
     container = client.containers.run(Base.CHROME,
                                       command='shm-size="2g"',
                                       ports={Base.CONNECTION_PORT: 4444},
@@ -24,10 +43,11 @@ try:
     Data.BROWSER = webdriver.Remote(command_executor=f'http://localhost:{Base.CONNECTION_PORT}/wd/hub')
     Data.BROWSER.maximize_window()
 
+
+def run_tests():
     # list of keywords received as input to the program.
     # "login" is here to prove that nothing is run and nothing crashes if the feature has no method with this name
     keywords = ['product', 'buy', 'login']
-
     # load the method names from `/Tests/Web` that contain the keywords
     technology_folders = os.listdir('Tests/')
     for technology_folder in technology_folders:
@@ -61,6 +81,17 @@ try:
                     method()
                 except:
                     pass
+
+
+try:
+    # pull the image from the repo and wait
+    client.images.pull(Base.CHROME)
+
+    start_browser()
+
+    load_translations()
+
+    run_tests()
 
 except Exception as e:
     client.containers.close()
